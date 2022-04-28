@@ -63,25 +63,25 @@ final ThemeData myTheme = ThemeData(
   textTheme: TextTheme(
     headline1: TextStyle(
       color: ConstColor.white,
-      fontSize: getWidth(26),
+      fontSize: 26,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
     ),
     headline2: TextStyle(
       color: ConstColor.white,
-      fontSize: getWidth(14),
+      fontSize: 14,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     headline3: TextStyle(
       color: ConstColor.white,
-      fontSize: getWidth(28),
+      fontSize: 28,
       fontWeight: FontWeight.w500,
       fontStyle: FontStyle.normal,
     ),
     headline4: TextStyle(
       color: ConstColor.white,
-      fontSize: getWidth(16),
+      fontSize: 16,
       fontWeight: FontWeight.w500,
       fontStyle: FontStyle.normal,
     ),
@@ -250,7 +250,7 @@ final ThemeData myTheme = ThemeData(
   iconTheme:  IconThemeData(
     color: ConstColor.white,
     opacity: 1,
-    size: getWidth(25),
+    size: 25,
   ),
   primaryIconTheme: const IconThemeData(
     color: Color(0xffffffff),
@@ -322,7 +322,7 @@ final ThemeData myTheme = ThemeData(
     ),
     borderRadius: BorderRadius.all(Radius.circular(0.0)),
   )),
-  colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal).copyWith(
-    secondary: const Color(0xff009688),
+  colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(
+    secondary:  ConstColor.scaffoldColor,
   ),
 );
