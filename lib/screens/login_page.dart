@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zakovat/bloc/home_cubit.dart';
 import 'package:zakovat/bloc/home_state.dart';
+import 'package:zakovat/core/complements/text_style.dart';
 import 'package:zakovat/core/constans/color_cons.dart';
 import 'package:zakovat/core/list_data/list_data.dart';
 import 'package:zakovat/core/size_config/size_config.dart';
@@ -28,6 +29,7 @@ class LoginPage extends StatelessWidget {
   Scaffold scaffold(BuildContext context) {
     int index = context.watch<HomeCubit>().index;
     return Scaffold(
+      backgroundColor: ConstColor.scaffoldColor,
     body: Column(
       children: [
         Expanded(
@@ -39,11 +41,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(width: double.infinity,),
               Text(
                 splash[index]['name'],
-                style: TextStyle(
-                  color: ConstColor.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: getWidth(35),
-                ),
+                style: MyTextStyle.textStyleMain()
               ),
               SizedBox(height: getHeight(19)),
               SizedBox(
@@ -52,11 +50,7 @@ class LoginPage extends StatelessWidget {
                 child: Text(
                   splash[index]['subtitle'],
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: ConstColor.white,
-                    fontSize: getWidth(20),
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: MyTextStyle.textStyleNormal()
                 ),
               ),
               SizedBox(height: getHeight(53)),
@@ -73,14 +67,18 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: getHeight(35)),
-              InkWell(
+              GestureDetector(
                 child: CircleAvatar(
                   backgroundColor: ConstColor.blue,
                   radius: getWidth(40),
                   child: Icon(Icons.arrow_forward_ios_outlined,size: getWidth(40),color: ConstColor.white,),
                 ),
                 onTap: (){
-                  context.read<HomeCubit>().addIndex();
+                  if(index > 1){
+                    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+                  }else{
+                    context.read<HomeCubit>().addIndex();
+                  }
                 },
               ),
             ],

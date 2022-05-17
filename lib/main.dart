@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zakovat/core/theme/theme.dart';
+import 'package:zakovat/core/constans/color_cons.dart';
 import 'package:zakovat/routes/my_route.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: myTheme,
+      theme: ThemeData(primaryColor: ConstColor.blue),
       initialRoute: '/',
       onGenerateRoute: _forRoute.routeGeneret,
     );
