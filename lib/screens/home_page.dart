@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
+import 'package:zakovat/core/base/base_view.dart';
 import 'package:zakovat/core/complements/text_style.dart';
 import 'package:zakovat/core/constans/color_cons.dart';
 import 'package:zakovat/core/size_config/size_config.dart';
@@ -12,6 +13,15 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BaseView(
+      viewModal: MyHomePage(),
+      onPageBuilder: (context, widget) {
+        return myScaffold(context);
+      },
+    );
+  }
+
+  Scaffold myScaffold(BuildContext context) {
     return Scaffold(
       backgroundColor: ConstColor.scaffoldColor,
       drawer: Drawer(
@@ -47,23 +57,36 @@ class MyHomePage extends StatelessWidget {
               SizedBox(
                 height: getHeight(400),
                 child: GridView.builder(
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
                   itemCount: 4,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       child: Container(
                         margin: EdgeInsets.all(getHeight(10)),
-                        padding: EdgeInsets.only(top: getHeight(80),left: getWidth(15)),
-                        decoration:  BoxDecoration(
-                          borderRadius: const  BorderRadius.all(Radius.circular(10)),
-                          color: ConstColor.blue,
-                          image: const DecorationImage(fit: BoxFit.cover,image: CachedNetworkImageProvider("https://www.gazeta.uz/media/img/2021/12/YdKtD816402585222443_l.jpg"))
+                        padding: EdgeInsets.only(
+                            top: getHeight(80), left: getWidth(15)),
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: ConstColor.blue,
+                            image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: CachedNetworkImageProvider(
+                                    "https://www.gazeta.uz/media/img/2021/12/YdKtD816402585222443_l.jpg"))),
+                        child: Text(
+                          "Zakovat savollari",
+                          style: MyTextStyle.textStyleMain(),
                         ),
-                        child: Text("Zakovat savollari",style: MyTextStyle.textStyleMain(),),
                       ),
-                      onTap: (){
-                        Navigator.pushNamed(context, '/bolim');
+                      onTap: () {
+                        if(index == 0){
+                          Navigator.pushNamed(context, '/bolim');
+                        }else if(index == 1){
+                          Navigator.pushNamed(context, '/books');
+                        }else if(index == 2){
+                          Navigator.pushNamed(context, '/videos');
+                        }
                       },
                     );
                   },
@@ -83,16 +106,21 @@ class MyHomePage extends StatelessWidget {
                     height: getHeight(200),
                     width: getWidth(343),
                     margin: EdgeInsets.all(getHeight(10)),
-                    padding: EdgeInsets.only(top: getHeight(170),left: getWidth(20)),
+                    padding: EdgeInsets.only(
+                        top: getHeight(170), left: getWidth(20)),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: ConstColor.blue,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider("https://cdn.dribbble.com/users/56718/screenshots/1495105/dribbble.jpg?compress=1&resize=400x300"),
+                        image: CachedNetworkImageProvider(
+                            "https://cdn.dribbble.com/users/56718/screenshots/1495105/dribbble.jpg?compress=1&resize=400x300"),
                       ),
                     ),
-                    child: Text("Reclama uchun Joy",style: MyTextStyle.textStyleBold(),),
+                    child: Text(
+                      "Reclama uchun Joy",
+                      style: MyTextStyle.textStyleBold(),
+                    ),
                   );
                 },
                 options: CarouselOptions(

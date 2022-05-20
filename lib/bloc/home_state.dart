@@ -7,3 +7,7 @@ class HomeInitial extends HomeState{
 class SplashState extends HomeState{
   SplashState();
 }
+
+class VideoState extends HomeState{
+  VideoState();
+}
